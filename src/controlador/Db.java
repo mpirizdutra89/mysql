@@ -117,7 +117,7 @@ public class Db {
     }
     
     
-    public static void prueba(ResultSet resultSet ) {
+   /* public static void prueba(ResultSet resultSet ) {
          ArrayList<Object> productos = new ArrayList<>();
          ResultSetMetaData metaData=null;
           int columnCount =0;
@@ -177,6 +177,6 @@ System.out.println("a"+columnCount);
             default:
                 return Class.forName(typeName);
         }
-    }
+    }*/
 
 }
