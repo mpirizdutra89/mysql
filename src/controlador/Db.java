@@ -27,8 +27,8 @@ public class Db {
     public static Connection conec = null;
     private static final String host = "jdbc:mysql://localhost/";
     private static final String user = "root";
-    private static final String pass = "nicolas89";
-    private static  String bd= "quimica";
+    private static final String pass = "1234";
+    private static  String bd= "prueba";
     private static final String driver="com.mysql.cj.jdbc.Driver";
       public static String msjError="";
     
@@ -69,11 +69,11 @@ public class Db {
         boolean result;
         try {
             conec.close();
-            System.out.println("desconectado");
+           // System.out.println("desconectado");
             conec=null;
             result=true;
         } catch (SQLException ex) {
-             System.out.println("fallo la desconexion"+ex.getMessage());
+             //System.out.println("fallo la desconexion"+ex.getMessage());
              result=false;
         }
         return result;
@@ -89,7 +89,8 @@ public class Db {
             try {
                 stmt = conec.createStatement();
                 res = stmt.executeQuery(sql);
-
+               
+              
             } catch (SQLException ex) {
                 System.out.println("fallo la consulta" + ex.getMessage());
             }

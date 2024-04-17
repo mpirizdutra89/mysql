@@ -4,6 +4,8 @@
  */
 package controlador;
 
+import modelos.Productos;
+
 /**
  *
  * @author nn
@@ -12,9 +14,9 @@ public class Main {
 
    
     public static void main(String[] args) {
-      Db.consulta("select usuario_id,grupos_idgrupos, usuario_nombre,usuario_password from usuarios;");
-       // Db.servicioMysql();
-       Db.getDesconexion();
+        Productos pro=new Productos();
+        pro.mostrar();
+     
     }
     
 }
