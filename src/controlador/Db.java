@@ -28,7 +28,7 @@ public class Db {
     private static final String host = "jdbc:mysql://localhost/";
     private static final String user = "root";
     private static final String pass = "nicolas89";
-    private static  String bd= "pruebas";
+    private static  String bd= "prueba";
     private static final String driver="com.mysql.cj.jdbc.Driver";
       public static ArrayList<String> msjError=new ArrayList<String>();
     
