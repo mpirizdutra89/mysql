@@ -69,17 +69,24 @@ public class Productos {
                 }
             
         } catch (SQLException e) {
-            //
+            
         }
          Db.getDesconexion();
         return lista;
     }
     
     public void mostrar(){
-         ArrayList<Productos> lista =getAll();
-         for (Productos productos : lista) {
+         ArrayList<Productos> lista =this.getAll();
+         if(lista.size()>0){
+              for (Productos productos : lista) {
              System.out.println(productos);
-        }
+            }
+         }
+         else{
+             System.out.println("No hay datos para motrar.");
+         }
+        
+         
     }
     
     

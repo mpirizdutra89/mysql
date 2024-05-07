@@ -27,10 +27,10 @@ public class Db {
     public static Connection conec = null;
     private static final String host = "jdbc:mysql://localhost/";
     private static final String user = "root";
-    private static final String pass = "1234";
-    private static  String bd= "prueba";
+    private static final String pass = "nicolas89";
+    private static  String bd= "pruebas";
     private static final String driver="com.mysql.cj.jdbc.Driver";
-      public static String msjError="";
+      public static ArrayList<String> msjError=new ArrayList<String>();
     
     public static boolean getConeccion() {
         boolean res=false;
@@ -42,7 +42,7 @@ public class Db {
                  res=true;
             } catch (NullPointerException | SQLException | ClassNotFoundException ex) {
                res=false;
-                msjError="fallo de coneccion:" + ex.getMessage();
+                msjError.add("fallo de coneccion:" + ex.getMessage());
             }
         }
         return res;
@@ -72,8 +72,9 @@ public class Db {
            // System.out.println("desconectado");
             conec=null;
             result=true;
-        } catch (SQLException ex) {
-             //System.out.println("fallo la desconexion"+ex.getMessage());
+        } catch (NullPointerException | SQLException ex) {
+             
+              msjError.add("fallo la desconexion: "+ex.getMessage());
              result=false;
         }
         return result;
@@ -92,7 +93,8 @@ public class Db {
                
               
             } catch (SQLException ex) {
-                System.out.println("fallo la consulta" + ex.getMessage());
+                
+                 msjError.add("fallo la consulta: "+ex.getMessage());
             }
             
         }
@@ -110,7 +112,8 @@ public class Db {
                 res = stmt.executeUpdate(sql);
 
             } catch (SQLException ex) {
-                System.out.println("fallo la actualizacion" + ex.getMessage());
+              
+                  msjError.add("fallo la actualizacion: "+ex.getMessage());
             }
             getDesconexion();
         }

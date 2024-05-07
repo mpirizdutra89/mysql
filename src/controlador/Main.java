@@ -16,6 +16,13 @@ public class Main {
     public static void main(String[] args) {
         Productos pro=new Productos();
         pro.mostrar();
+        if(Db.msjError.size()>0){
+            for (String arg : Db.msjError) {
+                System.out.println(arg);
+            }
+        }
+        //System.out.println( Db.msjError);
+           
      
     }
     
