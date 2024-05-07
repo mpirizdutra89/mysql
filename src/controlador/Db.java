@@ -2,18 +2,18 @@
 package controlador;
 
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+//import java.lang.reflect.Constructor;
+//import java.lang.reflect.InvocationTargetException;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+//import java.sql.ResultSetMetaData;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 
 
@@ -56,16 +56,17 @@ public class Db {
 
     public static boolean servicioMysql(){
         boolean res;
-         String host = "localhost"; // Cambia esto si tu servidor MySQL está en otro host
-        int puerto = 3306; // Puerto predeterminado de MySQL
+         String host = "localhost"; 
+        int puerto = 3306; 
 
         try {
-            // Intenta conectarte al servidor MySQL
+           
             Socket socket = new Socket(host, puerto);
             res=true;
             socket.close();
         } catch (Exception e) {
             res=false;
+            
         }
         return res;
     }
