@@ -33,17 +33,22 @@ public class Db {
       public static ArrayList<String> msjError=new ArrayList<String>();
     
     public static boolean getConeccion() {
-        boolean res=false;
+        boolean res = false;
         if (servicioMysql()) {
+            if (servicioMysql()) {
 
-            try {
-                Class.forName(driver);
-                conec = DriverManager.getConnection(host + bd, user, pass);
-                 res=true;
-            } catch (NullPointerException | SQLException | ClassNotFoundException ex) {
-               res=false;
-                msjError.add("fallo de coneccion:" + ex.getMessage());
+                try {
+                    Class.forName(driver);
+                    conec = DriverManager.getConnection(host + bd, user, pass);
+                    res = true;
+                } catch (NullPointerException | SQLException | ClassNotFoundException ex) {
+                    res = false;
+                    msjError.add("fallo de coneccion:" + ex.getMessage());
+                }
             }
+        }
+        else{
+            msjError.add("");
         }
         return res;
 
@@ -120,6 +125,14 @@ public class Db {
         return res;
     }
     
+    
+    public static void mostrarErrores(){
+         if(Db.msjError.size()>0){
+            for (String arg : Db.msjError) {
+                System.out.println(arg);
+            }
+        }
+    }
     
    /* public static void prueba(ResultSet resultSet ) {
          ArrayList<Object> productos = new ArrayList<>();
