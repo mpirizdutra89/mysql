@@ -4,7 +4,12 @@
  */
 package controlador;
 
+import java.util.ArrayList;
+
 import modelos.Productos;
+import persistencia.Db;
+import persistencia.DbProducto;
+import persistencia.Mysql;
 
 /**
  *
@@ -12,14 +17,30 @@ import modelos.Productos;
  */
 public class Main {
 
-   
     public static void main(String[] args) {
-        Productos pro=new Productos();
-        pro.mostrar();
        
+        System.out.println("Listado de prodcuto");
+        mostrar(DbProducto.getAll());
+       
+        System.out.println("Buscar producto por id");
+        Productos producto=DbProducto.getById(1);
+        System.out.println(producto);
         
-           
-     
+        System.out.println("Hay errores?"); 
+        Db.mostrarErrores();
+        
     }
-    
+
+    public static void mostrar(ArrayList<Productos> lista) {
+
+        if (lista.size() > 0) {
+            for (Productos productos : lista) {
+                System.out.println(productos);
+            }
+        } else {
+            System.out.println("No hay productos para motrar.");
+        }
+
+    }
+
 }

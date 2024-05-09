@@ -4,7 +4,7 @@
  */
 package modelos;
 
-import controlador.Db;
+import persistencia.Db;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,7 +22,9 @@ public class Productos {
         this.nombre = nombre;
         this.precio = precio;
     }
-    public Productos(){}
+
+    public Productos() {
+    }
 
     public int getId() {
         return id;
@@ -52,42 +54,5 @@ public class Productos {
     public String toString() {
         return "Productos{" + " nombre=" + nombre + ", precio=" + precio + '}';
     }
-    
-    
-    public ArrayList<Productos> getAll() {
-        ArrayList<Productos> lista = new ArrayList<>();
-        try {
-          
-                ResultSet res = Db.consulta("SELECT * FROM productos;");
-                if (res != null) {
-                    while (res.next()) {
-                        id = res.getInt("id");
-                        nombre = res.getString("nombre");
-                        precio = res.getDouble("precio");
-                        lista.add(this);
-                    }
-                }
-            
-        } catch (SQLException e) {
-            
-        }
-         Db.getDesconexion();
-        return lista;
-    }
-    
-    public void mostrar(){
-         ArrayList<Productos> lista =this.getAll();
-         if(lista.size()>0){
-              for (Productos productos : lista) {
-             System.out.println(productos);
-            }
-         }
-         else{
-             System.out.println("No hay datos para motrar.");
-         }
-        
-         
-    }
-    
-    
+
 }
