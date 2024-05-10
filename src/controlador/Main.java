@@ -21,12 +21,18 @@ public class Main {
        
         System.out.println("Listado de prodcuto");
         mostrar(DbProducto.getAll());
+       int id=2;
+        System.out.println("\n\nBuscar producto por id: "+id);
+        Productos producto=DbProducto.getById(id);
+        if(producto!=null){
+                 System.out.println(producto);
+        }
+        else{
+            System.out.println("No hay datos para el id:"+id);
+        }
        
-        System.out.println("Buscar producto por id");
-        Productos producto=DbProducto.getById(1);
-        System.out.println(producto);
         
-        System.out.println("Hay errores?"); 
+        System.out.println("\n\n\nHay errores?"); 
         Db.mostrarErrores();
         
     }

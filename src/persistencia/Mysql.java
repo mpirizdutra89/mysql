@@ -10,7 +10,7 @@ public class Mysql {
 
     public static void tabla(String table) {
         select = select + table + " ";
-        SelectWhere = select + table + " " + " WHERE ";
+        SelectWhere = select + " WHERE ";
         Insert = Insert + table + " ";
         Update = Update + table + " ";
 

@@ -26,6 +26,7 @@ public class DbProducto {
 
     public static ArrayList<Productos> getAll() {
         ResultSet res = null;
+        producto=null;
         ArrayList<Productos> lista = new ArrayList<>();
         try {
            
@@ -54,12 +55,13 @@ public class DbProducto {
     
      public static Productos getById(int id) {
         ResultSet res = null;
+        producto=null;
         
         try {
            
             res = Db.consulta( Mysql.SelectWhere + " id=" + id);
             if (res != null) {
-                while (res.next()) {
+                if (res.next()) {
 
                     producto = new Productos();
                     producto.setId(res.getInt("id"));
@@ -69,6 +71,7 @@ public class DbProducto {
 
                 }
             }
+           
 
         } catch (SQLException ex) {
             Db.msjError.add("fallo la consulta: " + ex.getMessage());
